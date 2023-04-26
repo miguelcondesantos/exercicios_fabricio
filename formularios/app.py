@@ -3,16 +3,16 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/miguel', methods=['POST', 'GET'])
-def numerosS():
+def numeros():
     if request.method == 'POST':
         numero_um = float(request.form['numero_um'])
         numero_dois = float(request.form['numero_dois'])
         numero_tres = float(request.form['numero_tres'])
     else:
-        numero_um = float(request.form.get('numero_um'))
-        numero_dois = float(request.form.get('numero_dois'))
-        numero_tres = float(request.form.get('numero_tres'))
-    return (numero_um + numero_dois)/numero_tres
+        numero_um = float(request.args.get('numero_um'))
+        numero_dois = float(request.args.get('numero_dois'))
+        numero_tres = float(request.args.get('numero_tres'))
+    return str((numero_um + numero_dois)/numero_tres)
 
 
 
